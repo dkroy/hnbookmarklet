@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <title>Hacker News Bookmarklet</title>
+    <style>
+    #hnbookmarklet-container{
+        position:fixed;
+        top:0;
+        right:0;
+        margin:10px;
+        max-width: 428px;
+        border: 1px solid #999;
+        box-shadow: 0 0 10px rgba(0,0,0,.2)!important;
+        overflow-y:hidden;
+        z-index:999999;
+    }
+    #header{
+        background:#FF6600;
+        padding:3px;
+    }
+    #header a, #hnbookmarklet-close a, #posts-container > ul#posts li a{
+        color:black;
+        font-family: Verdana;
+        font-size: 10pt;
+        color:black;
+        text-decoration:none;
+    }
+    #header #logo{
+        padding-right:6px;
+        font-weight:bolder;
+    }
+    #header #logo img{
+        margin-bottom:-5px;
+        border:1px solid white;
+    }
+    #posts-container{
+        height:auto !important;
+        overflow-y:scroll !important;
+        max-height: 500px !important;
+    }
+    #posts-container > ul#posts{
+        list-style:none;
+        padding: 0px 15px 0px 15px;
+      }
+      #posts-container > ul#posts li a:visited{
+        color:grey;
+    }
+    #hnbookmarklet-close{
+        text-align:center;
+        padding:4px;
+        border-top: 1px solid #999;
+        background: transparent;
+        postion:absolute;
+        bottom:0;
+        left:0;
+        right:0;
+    }
+    #hnbookmarklet-close a{
+        display:block;
+    }
+    #posts-container .subtext, #posts-container .subtext a{
+        font-family: Verdana;
+        font-size: 7pt !important;
+        color: #828282 !important;
+        padding-bottom:5px;
+    }
+    </style>
+</head>
+<body>
+    <div id="hnbookmarklet-container">
+        <div id="header">
+            <span id="logo"><a href=""><img src='https://news.ycombinator.com/y18.gif' /> HN Boomarklet</a></span>
+            <a href="javascript:window.location=%22http://news.ycombinator.com/submitlink?u=%22+encodeURIComponent(document.location)+%22&t=%22+encodeURIComponent(document.title);">Submit</a> | 
+            <a id="newest" href="#newest">Newest</a> | 
+            <a id="show-hn" href="#showHN">Show HN</a> | 
+            <a id="ask-hn" href="#askHN">Ask HN</a>
+        </div>
+        <div id="posts-container"></div>
+        <div id='hnbookmarklet-close'><a href="javascript: window.document.body.removeChild(window.document.getElementById('hnbookmarklet-container')); void(0);">Close</a></div>
+    </div>
+    <script>
+    // https://groups.google.com/forum/#!topic/hnsearch/qQkrdus0rrY
+    var hnsearch = {
+        url : "http://api.thriftdb.com/api.hnsearch.com/items/_search",
+        filter :{
+            top    : {
+                      limit : 30,
+                      sortby : "product(points,pow(2,div(div(ms(create_ts,NOW),3600000),72))) desc",
+                       'filter[fields][type]': 'submission'
+                      },
+            newest : { 
+                       limit:30,
+                       sortby:"create_ts desc",
+                       'filter[fields][type]': 'submission'
+                     },
+            askHN  : {
+                        limit:30,
+                        sortby:'create_ts desc',
+                        'filter[queries][]':'title:("ask hn")',
+                        'filter[fields][type]': 'submission'
+                     },  
+            showHN : {
+                        'filter[queries][]':'title:("show hn")',
+                        limit:30,
+                        sortby:'create_ts desc',
+                        'filter[fields][type]': 'submission'
+                     }
+         }
+    };
+
+    Element.prototype.remove = function() {
+        this.parentElement.removeChild(this);
+    };
+    NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+        for(var i = 0, len = this.length; i < len; i++) {
+            if(this[i] && this[i].parentElement) {
+                this[i].parentElement.removeChild(this[i]);
+            }
+        }
+    };
+    function waitIcon(show){
+        console.log(show);
+        if(show === true){
+            document.getElementById("posts-container").innerHTML = ("<img id='waiting' src='./images/pending.gif' />");
+        }else{
+            if(document.getElementById("waiting") != null)
+                document.getElementById("waiting").remove();
+        }
+    } 
+    if (!($ = window.jQuery)) { // typeof jQuery=='undefined' works too  
+        script = document.createElement( 'script' );  
+       script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';   
+        script.onload=initBookmark;  
+        document.body.appendChild(script);  
+    }   
+    else {  
+        initBookmark();  
+    }  
+    function initBookmark() { 
+    waitIcon(true);
+    $.ajax({
+      dataType: "jsonp",
+      url: hnsearch.url,
+      data: hnsearch.filter.top,
+      success: getFeed,
+    });
+        $('#show-hn').on('click', function(){
+            waitIcon(true);
+            $.ajax({
+              dataType: "jsonp",
+              url: hnsearch.url,
+              data: hnsearch.filter.showHN,
+              success: getFeed,
+            });
+        });
+        $('#newest').on('click', function(){
+            waitIcon(true);
+            $.ajax({
+              dataType: "jsonp",
+              url: hnsearch.url,
+              data: hnsearch.filter.newest,
+              success: getFeed,
+            });
+        });
+        $('#ask-hn').on('click', function(){
+            waitIcon(true);
+            $.ajax({
+              dataType: "jsonp",
+              url: hnsearch.url,
+              data: hnsearch.filter.askHN,
+              success: getFeed,
+            });
+        });
+    }
+
+    var posts = [];
+    function getFeed(data){
+      posts = [];
+      for(var i = 0; i < data.results.length; i++ ) {
+        var HackerNewsPost = undefined;
+        HackerNewsPost = {
+            id : data.results[i].item.id,
+            points : data.results[i].item.points,
+            title : data.results[i].item.title,
+            url : (data.results[i].item.url === null)? "https://news.ycombinator.com/item?id="+ data.results[i].item.id : data.results[i].item.url,
+            createdAt : data.results[i].item.create_ts,
+            postedBy : data.results[i].item.username,
+            text : data.results[i].item.text,
+            comments : data.results[i].item.num_comments
+        };
+        HackerNewsPost.html = "<li><a target='_blank' href='"+HackerNewsPost.url+"'>"+HackerNewsPost.title+"</a><div class='subtext'>"+HackerNewsPost.points+" points | <a target='_blank' href='https://news.ycombinator.com/item?id="+ HackerNewsPost.id +"'>"+HackerNewsPost.comments+" comments</a></div></li>";
+        posts.push(HackerNewsPost);
+        posts.sort(function(a, b) {return b.points - a.points});
+      }
+       list = document.createElement( 'ul' );
+       list.setAttribute('id','posts');
+       var postsHtml = '';
+       for(var i in posts)
+            postsHtml += posts[i].html;
+       list.innerHTML = postsHtml;
+       waitIcon(false);
+       $('#posts-container').html(list);
+    }
+    </script>
+	</body>
+</html> 
