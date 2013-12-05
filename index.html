@@ -194,7 +194,7 @@
         };
         HackerNewsPost.html = "<li><a target='_blank' href='"+HackerNewsPost.url+"'>"+HackerNewsPost.title+"</a><div class='subtext'>"+HackerNewsPost.points+" points | <a target='_blank' href='https://news.ycombinator.com/item?id="+ HackerNewsPost.id +"'>"+HackerNewsPost.comments+" comments</a></div></li>";
         posts.push(HackerNewsPost);
-        posts.sort(function(a, b) {return b.points - a.points});
+        //posts.sort(function(a, b) {return b.points - a.points});
       }
        list = document.createElement( 'ul' );
        list.setAttribute('id','posts');
