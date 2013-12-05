@@ -142,10 +142,9 @@
     function initBookmark() { 
     waitIcon(true);
     $.ajax({
-      dataType: "jsonp",
-      url: hnsearch.url,
-      data: hnsearch.filter.top,
-      success: getFeed,
+      dataType: "json",
+      url: hnsearch.frontPage,
+      success: getFeed
     });
         $('#show-hn').on('click', function(){
             waitIcon(true);
@@ -153,7 +152,7 @@
               dataType: "jsonp",
               url: hnsearch.url,
               data: hnsearch.filter.showHN,
-              success: getFeed,
+              success: getFeed
             });
         });
         $('#newest').on('click', function(){
@@ -162,7 +161,7 @@
               dataType: "jsonp",
               url: hnsearch.url,
               data: hnsearch.filter.newest,
-              success: getFeed,
+              success: getFeed
             });
         });
         $('#ask-hn').on('click', function(){
@@ -171,7 +170,7 @@
               dataType: "jsonp",
               url: hnsearch.url,
               data: hnsearch.filter.askHN,
-              success: getFeed,
+              success: getFeed
             });
         });
     }
@@ -179,17 +178,19 @@
     var posts = [];
     function getFeed(data){
       posts = [];
-      for(var i = 0; i < data.results.length; i++ ) {
+	  var numberOfPosts = (typeof data.count === "undefined")?data.results.length:data.count;
+      for(var i = 0; i < numberOfPosts; i++ ) {
         var HackerNewsPost = undefined;
+		var post = (typeof data.results === "undefined")?data.value.items[i]:data.results[i].item;
         HackerNewsPost = {
-            id : data.results[i].item.id,
-            points : data.results[i].item.points,
-            title : data.results[i].item.title,
-            url : (data.results[i].item.url === null)? "https://news.ycombinator.com/item?id="+ data.results[i].item.id : data.results[i].item.url,
-            createdAt : data.results[i].item.create_ts,
-            postedBy : data.results[i].item.username,
-            text : data.results[i].item.text,
-            comments : data.results[i].item.num_comments
+            id : post.id,
+            points : post.points,
+            title : post.title,
+            url : (post.url === null)? "https://news.ycombinator.com/item?id="+ post.id : post.url,
+            createdAt : post.create_ts,
+            postedBy : post.username,
+            text : post.text,
+            comments : post.num_comments
         };
         HackerNewsPost.html = "<li><a target='_blank' href='"+HackerNewsPost.url+"'>"+HackerNewsPost.title+"</a><div class='subtext'>"+HackerNewsPost.points+" points | <a target='_blank' href='https://news.ycombinator.com/item?id="+ HackerNewsPost.id +"'>"+HackerNewsPost.comments+" comments</a></div></li>";
         posts.push(HackerNewsPost);
