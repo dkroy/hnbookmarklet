@@ -180,8 +180,14 @@
       posts = [];
 	  var numberOfPosts = (typeof data.count === "undefined")?data.results.length:data.count;
       for(var i = 0; i < numberOfPosts; i++ ) {
-        var HackerNewsPost = undefined;
-		var post = (typeof data.results === "undefined")?data.value.items[i]:data.results[i].item;
+        var HackerNewsPost, post = undefined;
+		if(typeof data.results === "undefined"){
+			post = data.value.items[i];
+			post.url = post.link;
+			post.id = post.comments.replace('https://news.ycombinator.com/item?id=','');
+		}
+		post = post || data.results[i].item;
+		//link and comments
         HackerNewsPost = {
             id : post.id,
             points : post.points,
@@ -194,7 +200,7 @@
         };
         HackerNewsPost.html = "<li><a target='_blank' href='"+HackerNewsPost.url+"'>"+HackerNewsPost.title+"</a><div class='subtext'>"+HackerNewsPost.points+" points | <a target='_blank' href='https://news.ycombinator.com/item?id="+ HackerNewsPost.id +"'>"+HackerNewsPost.comments+" comments</a></div></li>";
         posts.push(HackerNewsPost);
-        //posts.sort(function(a, b) {return b.points - a.points});
+        posts.sort(function(a, b) {return b.points - a.points});
       }
        list = document.createElement( 'ul' );
        list.setAttribute('id','posts');
