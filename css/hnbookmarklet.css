@@ -9,6 +9,7 @@
 	overflow:hidden !important;
 	z-index:999999 !important;
 	background:#FFF !important;
+	text-align: left !important;
 }
 #hnbookmarklet-container #header{
 	background:#FF6600 !important;
