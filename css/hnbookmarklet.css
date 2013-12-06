@@ -1,0 +1,61 @@
+#hnbookmarklet-container{
+	position:fixed;
+	top:0;
+	right:0;
+	margin:10px;
+	max-width: 428px;
+	border: 1px solid #999;
+	box-shadow: 0 0 10px rgba(0,0,0,.2)!important;
+	overflow-y:hidden;
+	z-index:999999;
+}
+#header{
+	background:#FF6600;
+	padding:3px;
+}
+#header a, #hnbookmarklet-close a, #posts-container > ul#posts li a{
+	color:black;
+	font-family: Verdana;
+	font-size: 10pt;
+	color:black;
+	text-decoration:none;
+}
+#header #logo{
+	padding-right:6px;
+	font-weight:bolder;
+}
+#header #logo img{
+	margin-bottom:-5px;
+	border:1px solid white;
+}
+#posts-container{
+	height:auto !important;
+	overflow-y:scroll !important;
+	max-height: 500px !important;
+}
+#posts-container > ul#posts{
+	list-style:none;
+	padding: 0px 15px 0px 15px;
+  }
+  #posts-container > ul#posts li a:visited{
+	color:grey;
+}
+#hnbookmarklet-close{
+	text-align:center;
+	padding:4px;
+	border-top: 1px solid #999;
+	background: transparent;
+	postion:absolute;
+	bottom:0;
+	left:0;
+	right:0;
+}
+#hnbookmarklet-close a{
+	display:block;
+}
+#posts-container .subtext, #posts-container .subtext a{
+	font-family: Verdana;
+	font-size: 7pt !important;
+	color: #828282 !important;
+	padding-bottom:5px;
+}
