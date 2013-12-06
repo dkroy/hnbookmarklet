@@ -6,7 +6,7 @@
 	max-width: 428px !important;
 	border: 1px solid #999 !important;
 	box-shadow: 0 0 10px rgba(0,0,0,.2) !important;
-	overflow-y:hidden !important;
+	overflow:hidden !important;
 	z-index:999999 !important;
 	background:#FFF !important;
 }
