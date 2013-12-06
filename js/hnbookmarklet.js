@@ -124,7 +124,7 @@ var hnbookmarklet = (function( global, undefined ) {
 	function attachStyle(style){
 		var cssLink = document.createElement('link');
 	    cssLink.setAttribute('rel', 'stylesheet');
-		cssLink.setAttribute('href', host + style);
+		cssLink.setAttribute('href', style);
 		var styles = document.head.getElementsByTagName("link");
 		for(var i = 0; i < styles.length; i++){
 		if(styles[i].getAttribute('href') === cssLink.getAttribute('href'))
