@@ -1,61 +1,61 @@
 #hnbookmarklet-container{
-	position:fixed;
-	top:0;
-	right:0;
-	margin:10px;
-	max-width: 428px;
-	border: 1px solid #999;
-	box-shadow: 0 0 10px rgba(0,0,0,.2)!important;
-	overflow-y:hidden;
-	z-index:999999;
+	position:fixed !important;
+	top:0 !important;
+	right:0 !important;
+	margin:10px !important;
+	max-width: 428px !important;
+	border: 1px solid #999 !important;
+	box-shadow: 0 0 10px rgba(0,0,0,.2)!important !important;
+	overflow-y:hidden !important;
+	z-index:999999 !important;
 }
-#header{
-	background:#FF6600;
-	padding:3px;
+#hnbookmarklet-container #header{
+	background:#FF6600 !important;
+	padding:3px !important;
 }
-#header a, #hnbookmarklet-close a, #posts-container > ul#posts li a{
-	color:black;
-	font-family: Verdana;
-	font-size: 10pt;
-	color:black;
-	text-decoration:none;
+#hnbookmarklet-container #header a, #hnbookmarklet-container #hnbookmarklet-close a, #hnbookmarklet-container #posts-container > ul#posts li a{
+	color:black !important;
+	font-family: Verdana !important;
+	font-size: 10pt !important;
+	color:black !important;
+	text-decoration:none !important;
 }
-#header #logo{
-	padding-right:6px;
-	font-weight:bolder;
+#hnbookmarklet-container #header #logo{
+	padding-right:6px !important;
+	font-weight:bolder !important;
 }
-#header #logo img{
-	margin-bottom:-5px;
-	border:1px solid white;
+#hnbookmarklet-container #header #logo img{
+	margin-bottom:-5px !important;
+	border:1px solid white !important;
 }
-#posts-container{
+#hnbookmarklet-container #posts-container{
 	height:auto !important;
 	overflow-y:scroll !important;
 	max-height: 500px !important;
 }
-#posts-container > ul#posts{
-	list-style:none;
-	padding: 0px 15px 0px 15px;
+#hnbookmarklet-container #posts-container > ul#posts{
+	list-style:none !important;
+	padding: 0px 15px 0px 15px !important;
   }
-  #posts-container > ul#posts li a:visited{
-	color:grey;
+#hnbookmarklet-container #posts-container > ul#posts li a:visited{
+	color:grey !important;
 }
-#hnbookmarklet-close{
-	text-align:center;
-	padding:4px;
-	border-top: 1px solid #999;
-	background: transparent;
-	postion:absolute;
-	bottom:0;
-	left:0;
-	right:0;
+#hnbookmarklet-container #hnbookmarklet-close{
+	text-align:center !important;
+	padding:4px !important;
+	border-top: 1px solid #999 !important;
+	background: transparent !important;
+	postion:absolute !important;
+	bottom:0 !important;
+	left:0 !important;
+	right:0 !important;
 }
-#hnbookmarklet-close a{
-	display:block;
+#hnbookmarklet-container #hnbookmarklet-close a{
+	display:block !important;
 }
-#posts-container .subtext, #posts-container .subtext a{
-	font-family: Verdana;
+#hnbookmarklet-container #posts-container .subtext, #hnbookmarklet-container #posts-container .subtext a{
+	font-family: Verdana !important;
 	font-size: 7pt !important;
 	color: #828282 !important;
-	padding-bottom:5px;
+	padding-bottom:5px !important;
 }
