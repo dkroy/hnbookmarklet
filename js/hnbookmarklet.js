@@ -47,6 +47,14 @@ var hnbookmarklet = (function( global, undefined ) {
         }
     } 
 	function attachListeners(){
+		$('#frontpage-hn').on('click', function(){
+			waitIcon(true);
+			$.ajax({
+			  dataType: "json",
+			  url: hnsearch.frontPage,
+			  success: getFeed
+			});
+		});
 		$('#show-hn').on('click', function(){
 			waitIcon(true);
 			$.ajax({
@@ -136,7 +144,7 @@ var hnbookmarklet = (function( global, undefined ) {
 		attachStyle(location.protocol.replace('file','http')+'//rawgithub.com/dkroy/hnbookmarklet/gh-pages/css/hnbookmarklet.css');
 		var html = '<div id="hnbookmarklet-container"> \
 			<div id="header"> \
-				<span id="logo"><a href=""><img src="https://news.ycombinator.com/y18.gif" /> HN Boomarklet</a></span> \
+				<span id="logo"><a id="frontpage-hn" href="#front"><img src="https://news.ycombinator.com/y18.gif" /> HN Boomarklet</a></span> \
 				<a href="javascript:window.location=%22http://news.ycombinator.com/submitlink?u=%22+encodeURIComponent(document.location)+%22&t=%22+encodeURIComponent(document.title);">Submit</a> | \
 				<a id="newest" href="#newest">Newest</a> | \
 				<a id="show-hn" href="#showHN">Show HN</a> | \
