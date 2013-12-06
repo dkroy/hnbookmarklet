@@ -144,11 +144,11 @@ var hnbookmarklet = (function( global, undefined ) {
 		attachStyle(location.protocol.replace('file','http')+'//rawgithub.com/dkroy/hnbookmarklet/gh-pages/css/hnbookmarklet.css');
 		var html = '<div id="hnbookmarklet-container"> \
 			<div id="header"> \
-				<span id="logo"><a id="frontpage-hn" href="#front"><img src="https://news.ycombinator.com/y18.gif" /> HN Boomarklet</a></span> \
+				<span id="logo"><a id="frontpage-hn" href="#"><img src="https://news.ycombinator.com/y18.gif" /> HN Boomarklet</a></span> \
 				<a href="javascript:window.location=%22http://news.ycombinator.com/submitlink?u=%22+encodeURIComponent(document.location)+%22&t=%22+encodeURIComponent(document.title);">Submit</a> | \
-				<a id="newest" href="#newest">Newest</a> | \
-				<a id="show-hn" href="#showHN">Show HN</a> | \
-				<a id="ask-hn" href="#askHN">Ask HN</a>\
+				<a id="newest" href="#">Newest</a> | \
+				<a id="show-hn" href="#">Show HN</a> | \
+				<a id="ask-hn" href="#">Ask HN</a>\
 			</div> \
 			<div id="posts-container"></div> \
 			<div id="hnbookmarklet-close"><a href="javascript: window.document.body.removeChild(window.document.getElementById(\'hnbookmarklet-container\')); void(0);">Close</a></div> \
