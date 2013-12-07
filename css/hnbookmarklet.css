@@ -12,18 +12,21 @@
 	text-align: left !important;
 	color: black !important;
 }
-#hnbookmarklet-container #header{
+#hnbookmarklet-container > #header{
 	background:#FF6600 !important;
 	padding:3px !important;
 	margin: 0 !important;
 	height: auto !important;
 }
-#hnbookmarklet-container #header a, #hnbookmarklet-container #hnbookmarklet-close a, #hnbookmarklet-container #posts-container > ul#posts li > a{
+#hnbookmarklet-container > #header > a, #hnbookmarklet-container #hnbookmarklet-close a, #hnbookmarklet-container #posts-container > ul#posts li > a{
 	color:black !important;
 	font-family: Verdana !important;
 	font-size: 10pt !important;
 	color:black !important;
 	text-decoration:none !important;
+	background: none !important;
+	display: inline !important;
+	text-align: left !important;
 }
 #hnbookmarklet-container #header #logo{
 	display: inline !important;
