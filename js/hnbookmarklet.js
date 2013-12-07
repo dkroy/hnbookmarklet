@@ -143,7 +143,7 @@ var hnbookmarklet = (function( global, undefined ) {
 	function renderInterface(){
 		attachStyle(location.protocol.replace('file','http')+'//rawgithub.com/dkroy/hnbookmarklet/gh-pages/css/hnbookmarklet.css');
 		var html = '<div id="hnbookmarklet-container"> \
-			<div id="header"> \
+			<div id="hnbookmarklet-header"> \
 				<span id="logo"><a id="frontpage-hn" href="#"><img src="https://news.ycombinator.com/y18.gif" /> HN Boomarklet</a></span> \
 				<a href="javascript:window.location=%22http://news.ycombinator.com/submitlink?u=%22+encodeURIComponent(document.location)+%22&t=%22+encodeURIComponent(document.title);">Submit</a> | \
 				<a id="newest" href="#">Newest</a> | \
