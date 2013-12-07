@@ -36,6 +36,7 @@
 #hnbookmarklet-container #hnbookmarklet-header #hnb-logo img{
 	margin-bottom:-5px !important;
 	border:1px solid white !important;
+	vertical-align: text-top !important;
 }
 #hnbookmarklet-container #hnbookmarklet-header a#frontpage-hn{
 	color:black !important;
