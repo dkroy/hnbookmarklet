@@ -57,11 +57,11 @@
 	text-align:center !important;
 	padding:4px !important;
 	border-top: 1px solid #999 !important;
-	text-align: center !important;
 	background: white !important;
 }
 #hnbookmarklet-container #hnbookmarklet-close a{
 	display:block !important;
+	text-align: center !important;
 }
 #hnbookmarklet-container #posts-container .subtext, #hnbookmarklet-container #posts-container .subtext a{
 	font-family: Verdana !important;
