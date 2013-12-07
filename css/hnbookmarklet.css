@@ -40,6 +40,7 @@
 #hnbookmarklet-container #hnbookmarklet-header a#frontpage-hn{
 	color:black !important;
 	font-weight:bolder !important;
+	text-decoration: none !important;
 }
 #hnbookmarklet-container #posts-container{
 	height:auto !important;
