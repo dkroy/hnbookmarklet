@@ -28,12 +28,12 @@
 	display: inline !important;
 	text-align: left !important;
 }
-#hnbookmarklet-container #hnbookmarklet-header #logo{
+#hnbookmarklet-container #hnbookmarklet-header #hnb-logo{
 	display: inline !important;
 	padding-right:6px !important;
 	font-weight:bolder !important;
 }
-#hnbookmarklet-container #hnbookmarklet-header #logo img{
+#hnbookmarklet-container #hnbookmarklet-header #hnb-logo img{
 	margin-bottom:-5px !important;
 	border:1px solid white !important;
 }
