@@ -37,6 +37,10 @@
 	margin-bottom:-5px !important;
 	border:1px solid white !important;
 }
+#hnbookmarklet-container #hnbookmarklet-header a#frontpage-hn{
+	color:black !important;
+	font-weight:bolder !important;
+}
 #hnbookmarklet-container #posts-container{
 	height:auto !important;
 	overflow-y:scroll !important;
