@@ -27,6 +27,7 @@
 	background: none !important;
 	display: inline !important;
 	text-align: left !important;
+	vertical-align: middle !important;
 }
 #hnbookmarklet-container #hnbookmarklet-header #hnb-logo{
 	display: inline !important;
@@ -34,9 +35,8 @@
 	font-weight:bolder !important;
 }
 #hnbookmarklet-container #hnbookmarklet-header #hnb-logo img{
-	margin-bottom:-5px !important;
 	border:1px solid white !important;
-	vertical-align: text-top !important;
+	vertical-align: top !important;
 }
 #hnbookmarklet-container #hnbookmarklet-header a#frontpage-hn{
 	color:black !important;
