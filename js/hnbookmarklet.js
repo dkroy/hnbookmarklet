@@ -163,14 +163,11 @@ var hnbookmarklet = (function( global, undefined ) {
 			if(document.getElementById('hnbookmarklet-container') === null)
 				renderInterface();
 			if (!($ = window.jQuery)) { // typeof jQuery=='undefined' works too  
-				script = document.createElement( 'script' );  
+			   script = document.createElement( 'script' );  
 			   script.src = location.protocol.replace('file','http')+'//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';   
-				script.onload=initBookmark;  
-				document.body.appendChild(script);  
-			}   
-			else {  
-				initBookmark();  
-			}  
+			   document.body.appendChild(script);  
+			}
+			initBookmark();
 		}
 	};
 	return core;
