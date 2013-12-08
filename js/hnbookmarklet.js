@@ -165,9 +165,11 @@ var hnbookmarklet = (function( global, undefined ) {
 			if (!($ = window.jQuery)) { // typeof jQuery=='undefined' works too  
 			   script = document.createElement( 'script' );  
 			   script.src = location.protocol.replace('file','http')+'//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';   
-			   document.body.appendChild(script);  
+			   script.onload = initBookmark;
+			   document.body.appendChild(script);
+			}else{
+			  initBookmark();
 			}
-			initBookmark();
 		}
 	};
 	return core;
