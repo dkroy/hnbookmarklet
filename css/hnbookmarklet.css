@@ -35,6 +35,7 @@
 	font-weight:bolder !important;
 }
 #hnbookmarklet-container #hnbookmarklet-header #hnb-logo img{
+	display: inline !important;
 	border:1px solid white !important;
 	vertical-align: top !important;
 }
