@@ -144,7 +144,7 @@ var hnbookmarklet = (function( global, undefined ) {
 		document.head.appendChild(cssLink);
 	};
 	function renderInterface(){
-		attachStyle(location.protocol.replace('file','http')+'//rawgithub.com/dkroy/hnbookmarklet/gh-pages/css/hnbookmarklet.css');
+		attachStyle(location.protocol.replace('file','http')+'//dkroy.github.io/hnbookmarklet/css/hnbookmarklet.css');
 		var html = '<div id="hnbookmarklet-container"> \
 			<div id="hnbookmarklet-header"> \
 				<span id="hnb-logo"><a id="frontpage-hn" href="#"><img src="https://news.ycombinator.com/y18.gif" /> HN Boomarklet</a></span> \
