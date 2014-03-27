@@ -108,7 +108,7 @@ var hnbookmarklet = (function( global, undefined ) {
             comments : post.num_comments
         };
         var pointsHtml = (typeof HackerNewsPost.points !== "undefined")?("<div class='subtext'>"+HackerNewsPost.points + " points | "):("<div class='subtext'>");
-        HackerNewsPost.html = "<li><a target='_blank' href='"+HackerNewsPost.url+"'>"+HackerNewsPost.title+"</a>"+pointsHtml+"<a target='_blank' href='https://news.ycombinator.com/item?id="+ HackerNewsPost.id +"'>"+(HackerNewsPost.comments||"")+" comments</a></div></li>";
+        HackerNewsPost.html = "<li><a target='_blank' href='"+HackerNewsPost.url+"'>"+HackerNewsPost.title+"</a>"+pointsHtml+"<a target='_blank' href='https://news.ycombinator.com/item?id="+ HackerNewsPost.id +"'>"+(HackerNewsPost.comments||"&nbsp;")+" comments</a></div></li>";
         posts.push(HackerNewsPost);
         // posts.sort(function(a, b) {return b.points - a.points}); 
       }
