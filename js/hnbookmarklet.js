@@ -1,7 +1,7 @@
 var hnbookmarklet = (function( global, undefined ) {
     var hnsearch = {
         url : location.protocol.replace('file','http')+"//api.thriftdb.com/api.hnsearch.com/items/_search",
-        frontPage : "http://pipes.yahoo.com/pipes/pipe.run?_id=43ff25fbe7e150e2ed82a2644971c923&_render=json&rssUrl=https://news.ycombinator.com/rss",
+        frontPage : "http://pipes.yahoo.com/pipes/pipe.run?_id=2FV68p9G3BGVbc7IdLq02Q&_render=json&feedurl=https%3A%2F%2Fnews.ycombinator.com%2Frss",
         filter :{
             top    : {
                       limit : 30,
