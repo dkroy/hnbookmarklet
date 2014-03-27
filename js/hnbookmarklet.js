@@ -47,7 +47,7 @@ var hnbookmarklet = (function( global, undefined ) {
 		$('#show-hn').on('click', function(){
 			waitIcon(true);
 			$.ajax({
-			  dataType: "jsonp",
+			  dataType: "json",
 			  url: hnsearch.url,
 			  data: hnsearch.filter.showHN,
 			  success: getFeed
@@ -56,7 +56,7 @@ var hnbookmarklet = (function( global, undefined ) {
 		$('#newest').on('click', function(){
 			waitIcon(true);
 			$.ajax({
-			  dataType: "jsonp",
+			  dataType: "json",
 			  url: hnsearch.url,
 			  data: hnsearch.filter.newest,
 			  success: getFeed
@@ -65,7 +65,7 @@ var hnbookmarklet = (function( global, undefined ) {
 		$('#ask-hn').on('click', function(){
 			waitIcon(true);
 			$.ajax({
-			  dataType: "jsonp",
+			  dataType: "json",
 			  url: hnsearch.url,
 			  data: hnsearch.filter.askHN,
 			  success: getFeed
