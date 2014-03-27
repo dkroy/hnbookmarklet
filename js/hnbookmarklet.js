@@ -98,8 +98,8 @@ var hnbookmarklet = (function( global, undefined ) {
 		post = post || data.hits[i];
 		//link and comments
         HackerNewsPost = {
-            id : post.objectID,
-            points : post.points,
+            id : post.objectID||post.id,
+            points : post.points||0,
             title : post.title,
             url : (post.url === null)? "https://news.ycombinator.com/item?id="+ post.id : post.url,
             createdAt : post.created_at,
