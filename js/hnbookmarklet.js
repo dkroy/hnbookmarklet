@@ -1,29 +1,15 @@
 var hnbookmarklet = (function( global, undefined ) {
     var hnsearch = {
-        url : location.protocol.replace('file','http')+"//api.thriftdb.com/api.hnsearch.com/items/_search",
+        url : "https://hn.algolia.com/api/v1/search_by_date",
         frontPage : "http://pipes.yahoo.com/pipes/pipe.run?_id=2FV68p9G3BGVbc7IdLq02Q&_render=json&feedurl=https%3A%2F%2Fnews.ycombinator.com%2Frss",
         filter :{
-            top    : {
-                      limit : 30,
-                      sortby : "product(points,pow(2,div(div(ms(create_ts,NOW),3600000),72))) desc",
-                       'filter[fields][type]': 'submission'
-                      },
-            newest : { 
-                       limit:30,
-                       sortby:"create_ts desc",
-                       'filter[fields][type]': 'submission'
-                     },
+            top    : {},
+            newest : {},
             askHN  : {
-                        limit:30,
-                        sortby:'create_ts desc',
-                        'filter[queries][]':'title:("ask hn")',
-                        'filter[fields][type]': 'submission'
+                        tags:'ask_hn''
                      },  
             showHN : {
-                        'filter[queries][]':'title:("show hn")',
-                        limit:30,
-                        sortby:'create_ts desc',
-                        'filter[fields][type]': 'submission'
+                        tags:'ask_hn''
                      }
          }
     };
@@ -119,7 +105,8 @@ var hnbookmarklet = (function( global, undefined ) {
             text : post.text,
             comments : post.num_comments
         };
-        HackerNewsPost.html = "<li><a target='_blank' href='"+HackerNewsPost.url+"'>"+HackerNewsPost.title+"</a><div class='subtext'>"+HackerNewsPost.points+" points | <a target='_blank' href='https://news.ycombinator.com/item?id="+ HackerNewsPost.id +"'>"+HackerNewsPost.comments+" comments</a></div></li>";
+        var pointsHtml = (typeof HackerNewsPost.points !== "undefined")?"<div class='subtext'>"+HackerNewsPost.points + " points | ":"";
+        HackerNewsPost.html = "<li><a target='_blank' href='"+HackerNewsPost.url+"'>"+HackerNewsPost.title+"</a>"+pointsHtml+"<a target='_blank' href='https://news.ycombinator.com/item?id="+ HackerNewsPost.id +"'>"+HackerNewsPost.comments+" comments</a></div></li>";
         posts.push(HackerNewsPost);
         // posts.sort(function(a, b) {return b.points - a.points}); 
       }
