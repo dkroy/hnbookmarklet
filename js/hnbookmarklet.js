@@ -6,10 +6,10 @@ var hnbookmarklet = (function( global, undefined ) {
             top    : {},
             newest : {},
             askHN  : {
-                        tags:'ask_hn''
+                        tags:'ask_hn'
                      },  
             showHN : {
-                        tags:'ask_hn''
+                        tags:'ask_hn'
                      }
          }
     };
