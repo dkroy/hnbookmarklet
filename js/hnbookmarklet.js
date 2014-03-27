@@ -4,12 +4,14 @@ var hnbookmarklet = (function( global, undefined ) {
         frontPage : "http://pipes.yahoo.com/pipes/pipe.run?_id=2FV68p9G3BGVbc7IdLq02Q&_render=json&feedurl=https%3A%2F%2Fnews.ycombinator.com%2Frss",
         filter :{
             top    : {},
-            newest : {},
+            newest : {
+                        tags:'story'
+                     },
             askHN  : {
-                        tags:'ask_hn'
+                        tags:'ask_hn,story'
                      },  
             showHN : {
-                        tags:'ask_hn'
+                        tags:'ask_hn,story'
                      }
          }
     };
@@ -85,28 +87,28 @@ var hnbookmarklet = (function( global, undefined ) {
     var posts = [];
     function getFeed(data){
       posts = [];
-	  var numberOfPosts = (typeof data.count === "undefined")?data.results.length:data.count;
+	  var numberOfPosts = (typeof data.count === "undefined")?data.hits.length:data.count;
       for(var i = 0; i < numberOfPosts; i++ ) {
         var HackerNewsPost, post = undefined;
-		if(typeof data.results === "undefined"){
+		if(typeof data.hits === "undefined"){
 			post = data.value.items[i];
 			post.url = post.link;
 			post.id = post.comments.replace('https://news.ycombinator.com/item?id=','');
 		}
-		post = post || data.results[i].item;
+		post = post || data.hits[i];
 		//link and comments
         HackerNewsPost = {
-            id : post.id,
+            id : post.objectID,
             points : post.points,
             title : post.title,
             url : (post.url === null)? "https://news.ycombinator.com/item?id="+ post.id : post.url,
-            createdAt : post.create_ts,
-            postedBy : post.username,
-            text : post.text,
+            createdAt : post.created_at,
+            postedBy : post.author,
+            text : post.story_text,
             comments : post.num_comments
         };
-        var pointsHtml = (typeof HackerNewsPost.points !== "undefined")?"<div class='subtext'>"+HackerNewsPost.points + " points | ":"";
-        HackerNewsPost.html = "<li><a target='_blank' href='"+HackerNewsPost.url+"'>"+HackerNewsPost.title+"</a>"+pointsHtml+"<a target='_blank' href='https://news.ycombinator.com/item?id="+ HackerNewsPost.id +"'>"+HackerNewsPost.comments+" comments</a></div></li>";
+        var pointsHtml = (typeof HackerNewsPost.points !== "undefined")?"<div class='subtext'>"+HackerNewsPost.points + " points | ":"<div class='subtext'>";
+        HackerNewsPost.html = "<li><a target='_blank' href='"+HackerNewsPost.url+"'>"+HackerNewsPost.title+"</a>"+pointsHtml+"<a target='_blank' href='https://news.ycombinator.com/item?id="+ HackerNewsPost.id +"'>"+HackerNewsPost.comments||""+" comments</a></div></li>";
         posts.push(HackerNewsPost);
         // posts.sort(function(a, b) {return b.points - a.points}); 
       }
