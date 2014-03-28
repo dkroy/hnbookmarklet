@@ -11,7 +11,7 @@ var hnbookmarklet = (function( global, undefined ) {
                         tags:'ask_hn,story'
                      },  
             showHN : {
-                        tags:'ask_hn,story'
+                        tags:'show_hn,story'
                      }
          }
     };
