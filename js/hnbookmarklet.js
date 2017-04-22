@@ -1,9 +1,11 @@
 var hnbookmarklet = (function( global, undefined ) {
     var hnsearch = {
         url : "https://hn.algolia.com/api/v1/search_by_date",
-        frontPage : "http://pipes.yahoo.com/pipes/pipe.run?_id=2FV68p9G3BGVbc7IdLq02Q&_render=json&feedurl=https%3A%2F%2Fnews.ycombinator.com%2Frss",
+        frontPage : "https://hn.algolia.com/api/v1/search_by_date",
         filter :{
-            top    : {},
+            top    : {
+		        tags:'story'
+	             },
             newest : {
                         tags:'story'
                      },
